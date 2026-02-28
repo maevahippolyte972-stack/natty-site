@@ -50,8 +50,8 @@
     .hero-sub { font-size:12px; color:var(--gold); letter-spacing:.5px; margin-bottom:40px; font-weight:500; }
     .hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
 
-    .video-section { width:100%; position:relative; background:#000; overflow:hidden; height:520px; }
-    .hero-video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; object-fit:cover; }
+    .video-section { width:100%; position:relative; background:#000; overflow:hidden; }
+    .hero-video { width:100%; height:520px; object-fit:cover; display:block; }
     .video-overlay { position:absolute; bottom:0; left:0; right:0; padding:16px 32px; background:linear-gradient(to top, rgba(26,53,24,.85) 0%, transparent 100%); display:flex; justify-content:flex-end; }
     .insta-link { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.8); text-decoration:none; font-size:12px; letter-spacing:1px; font-weight:400; transition:color .2s; }
     .insta-link:hover { color:var(--gold-s); }
@@ -304,6 +304,25 @@
       /* More padding on small screens */
       .cform { padding:24px 18px; }
     }
+
+    /* MODAL CHOIX LIEU */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:200; align-items:center; justify-content:center; padding:20px; }
+    .modal-overlay.open { display:flex; }
+    .modal { background:var(--cream); border-radius:4px; padding:42px 38px; max-width:480px; width:100%; position:relative; }
+    .modal-close { position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--gray); line-height:1; }
+    .modal-title { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--deep); margin-bottom:6px; }
+    .modal-sub { font-size:13px; color:var(--gray); margin-bottom:28px; font-weight:300; }
+    .modal-options { display:flex; flex-direction:column; gap:10px; }
+    .modal-opt { display:flex; align-items:center; gap:16px; padding:16px 20px; border:1.5px solid var(--border); border-radius:3px; text-decoration:none; transition:all .2s; background:white; }
+    .modal-opt:hover { border-color:var(--deep); transform:translateX(4px); }
+    .modal-opt-ic { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .ic-online { background:#e8f4fd; }
+    .ic-mq { background:#d4edda; }
+    .ic-fr { background:#fef0d6; }
+    .modal-opt-lb { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:2px; font-weight:600; }
+    .modal-opt-name { font-size:14px; font-weight:500; color:var(--deep); }
+    .modal-opt-desc { font-size:12px; color:var(--gray); font-weight:300; margin-top:1px; }
+    @media(max-width:540px){ .modal { padding:28px 20px; } }
   </style>
 </head>
 <body>
@@ -335,7 +354,7 @@
 
 <div class="video-section">
   <video class="hero-video" autoplay muted loop playsinline preload="auto">
-    <source src="https://res.cloudinary.com/diezuxvdj/video/upload/video_nouvelle_natty_bbktni.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/diezuxvdj/video/upload/c_fill,w_1280,h_520,g_auto/video_nouvelle_natty_bbktni.mp4" type="video/mp4">
   </video>
   <div class="video-overlay">
     <a href="https://www.instagram.com/natty_by_natur/" target="_blank" class="insta-link">
@@ -446,7 +465,7 @@
         </ul>
         <div class="presta-note"><strong>&#9888; Cheveux propres obligatoires</strong> &mdash; max J+3. Un suppl&eacute;ment sera factur&eacute; si un lavage doit &ecirc;tre effectu&eacute; sur place.</div>
         <div class="ast">* Cheveux boucl&eacute;s, fris&eacute;s ou cr&eacute;pus souhaitant un brushing : suppl&eacute;ment de 30&euro;.</div>
-        <a href="https://cal.com/nattybnature" target="_blank" class="presta-btn">Prendre rendez-vous &rarr;</a>
+        <a href="#" onclick="openRdv();return false;" target="_blank" class="presta-btn">Prendre rendez-vous &rarr;</a>
       </div>
       <div class="presta fade-in s1">
         <div class="presta-bar"></div>
@@ -497,7 +516,7 @@
           <li>Plan d&#8217;action par &eacute;crit</li>
           <li>Pr&eacute;sentiel ou en ligne</li>
         </ul>
-        <a href="https://cal.com/nattybnature" target="_blank" class="forf-cta">R&eacute;server</a>
+        <a href="#" onclick="openRdv();return false;" target="_blank" class="forf-cta">R&eacute;server</a>
       </div>
       <div class="forf fade-in s1">
         <div class="forf-dur">1 mois</div>
@@ -510,7 +529,7 @@
           <li>Suivi entre les s&eacute;ances</li>
           <li>Fiche cliente &amp; &eacute;volution</li>
         </ul>
-        <a href="https://cal.com/nattybnature" target="_blank" class="forf-cta">R&eacute;server</a>
+        <a href="#" onclick="openRdv();return false;" target="_blank" class="forf-cta">R&eacute;server</a>
       </div>
       <div class="forf feat fade-in s2">
         <div class="forf-tag">Le plus choisi</div>
@@ -525,7 +544,7 @@
           <li>Bilan de progression mensuel</li>
           <li>Conseils produits prioritaires</li>
         </ul>
-        <a href="https://cal.com/nattybnature" target="_blank" class="forf-cta">R&eacute;server</a>
+        <a href="#" onclick="openRdv();return false;" target="_blank" class="forf-cta">R&eacute;server</a>
       </div>
       <div class="forf fade-in s3">
         <div class="forf-dur">6 mois</div>
@@ -539,7 +558,7 @@
           <li>Bilan final d&eacute;taill&eacute;</li>
           <li>Tarif suivi pr&eacute;f&eacute;rentiel inclus</li>
         </ul>
-        <a href="https://cal.com/nattybnature" target="_blank" class="forf-cta">R&eacute;server</a>
+        <a href="#" onclick="openRdv();return false;" target="_blank" class="forf-cta">R&eacute;server</a>
       </div>
     </div>
     <div class="alma fade-in">
@@ -618,7 +637,7 @@
     </div>
     <div class="cta-bar fade-in">
       <p>Pr&ecirc;te &agrave; vivre votre propre transformation ? <strong>Commencez par une consultation.</strong></p>
-      <a href="https://cal.com/nattybnature" target="_blank">Prendre rendez-vous &rarr;</a>
+      <a href="#" onclick="openRdv();return false;" target="_blank">Prendre rendez-vous &rarr;</a>
     </div>
   </div>
 </section>
@@ -633,7 +652,7 @@
         <div class="channels">
           <a href="https://wa.me/596696655297" class="chan" target="_blank"><div class="chan-ic ic-wa">&#128172;</div><div><div class="chan-lb">WhatsApp</div><div class="chan-v">+596 696 65 52 97</div></div></a>
           <a href="mailto:nattybnature@gmail.com" class="chan"><div class="chan-ic ic-mail">&#9993;</div><div><div class="chan-lb">Email</div><div class="chan-v">nattybnature@gmail.com</div></div></a>
-          <a href="https://cal.com/nattybnature" class="chan" target="_blank"><div class="chan-ic ic-cal">&#128197;</div><div><div class="chan-lb">Prendre RDV</div><div class="chan-v">cal.com/nattybnature</div></div></a>
+          <a href="#" onclick="openRdv();return false;" class="chan" target="_blank"><div class="chan-ic ic-cal">&#128197;</div><div><div class="chan-lb">Prendre RDV</div><div class="chan-v">cal.com/nattybnature</div></div></a>
         </div>
       </div>
       <div class="cform">
@@ -715,6 +734,15 @@
   }
   document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); });
 
+
+  function openRdv() {
+    document.getElementById('rdvModal').classList.add('open');
+  }
+  function closeModal(e) {
+    if (e.target === document.getElementById('rdvModal')) {
+      document.getElementById('rdvModal').classList.remove('open');
+    }
+  }
   function showSlide(idx) {
     var total = 2;
     for (var i = 0; i < total; i++) {
@@ -747,5 +775,40 @@
     if (s) s.style.display = 'block';
   }
 </script>
+
+<!-- MODAL CHOIX LIEU -->
+<div class="modal-overlay" id="rdvModal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('rdvModal').classList.remove('open')">&times;</button>
+    <div class="modal-title">Prendre rendez-vous</div>
+    <div class="modal-sub">Choisissez votre mode de consultation</div>
+    <div class="modal-options">
+      <a href="https://cal.com/nattybnature/consultation-en-ligne" target="_blank" class="modal-opt" onclick="document.getElementById('rdvModal').classList.remove('open')">
+        <div class="modal-opt-ic ic-online">&#128187;</div>
+        <div>
+          <div class="modal-opt-lb">Distanciel</div>
+          <div class="modal-opt-name">Consultation en ligne</div>
+          <div class="modal-opt-desc">Forfaits holistiques &mdash; Partout dans le monde</div>
+        </div>
+      </a>
+      <a href="https://cal.com/nattybnature/presentielmartinique" target="_blank" class="modal-opt" onclick="document.getElementById('rdvModal').classList.remove('open')">
+        <div class="modal-opt-ic ic-mq">&#127965;</div>
+        <div>
+          <div class="modal-opt-lb">Pr&eacute;sentiel</div>
+          <div class="modal-opt-name">Martinique</div>
+          <div class="modal-opt-desc">Coiffure &amp; forfaits &mdash; &agrave; domicile ou espace partag&eacute;</div>
+        </div>
+      </a>
+      <a href="https://cal.com/nattybnature/presentielfrance" target="_blank" class="modal-opt" onclick="document.getElementById('rdvModal').classList.remove('open')">
+        <div class="modal-opt-ic ic-fr">&#127981;</div>
+        <div>
+          <div class="modal-opt-lb">Pr&eacute;sentiel</div>
+          <div class="modal-opt-name">France m&eacute;tropolitaine</div>
+          <div class="modal-opt-desc">Coiffure &amp; forfaits &mdash; &agrave; domicile ou espace partag&eacute;</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
